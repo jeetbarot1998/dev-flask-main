@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restx import Api
 import os
-# from utilities.ssp_cache import cache
+from utilities.cache import cache  
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
@@ -25,9 +25,9 @@ flask_app.db = db
 
 # ================================= API CACHE START ==================================
 # cache = Cache()
-# CACHE_CONFIG = {'CACHE_TYPE' : 'simple',
-#                 'CACHE_DEFAULT_TIMEOUT' : 600}
-# cache.init_app(flask_app, CACHE_CONFIG)
+CACHE_CONFIG = {'CACHE_TYPE' : 'simple',
+                'CACHE_DEFAULT_TIMEOUT' : 600}
+cache.init_app(flask_app, CACHE_CONFIG)
 # ================================= API CACHE START ==================================
 
 # ==================================== JWT START =====================================

@@ -1,7 +1,7 @@
 from flask_restx import Resource
 from flask import request
 from utilities.Jwt_auth import token_required, get_token_info
-# from utilities.ssp_cache import cache
+from utilities.cache import cache
 from models.us_datafetch_model import api,search_common_movie_link,input_for_movie_link,input_different, test_api_model
 # from bl.us_datafetch_bl import api_datafetch_factoring
 # import urllib.request, urllib.parse, urllib.error
@@ -59,7 +59,7 @@ class Test_Api(Resource):
         return 'Successfully recieved the get request'
 
 # TODO:FOR CACHE REER TTLCACHE AS WELL
-# @cache.memoize(timeout=300)
+@cache.memoize(timeout=300)
 @api.route('/search_for_common')
 class search(Resource):
     @api.expect(input_for_movie_link)
